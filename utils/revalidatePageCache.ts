@@ -23,6 +23,8 @@ export default async function revalidatePageCache(path: string) {
     // Get the response data
     const data = (await response.json()) as ResponseData;
 
+    console.log("data rev: ", data);
+
     // Return the response data
     return data;
 

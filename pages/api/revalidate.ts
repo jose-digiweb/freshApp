@@ -50,7 +50,7 @@ export default async function handler(
       await res.revalidate(path);
 
       // Send the response
-      return res.status(200).json({ revalidated: "heyyyy" });
+      return res.status(200).json({ revalidated: true });
     }
 
     // Increase the loadCount value for the current page
