@@ -9,6 +9,8 @@ export default async function middleware(req: MyNextApiRequest) {
   // Get the current path
   const path = req.nextUrl.pathname;
 
+  console.log("Middleware called");
+
   /**
    * Call the revalidate endpoint
    * @Note The revalidated endpoint will keep tracking how many time
