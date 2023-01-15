@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* These are the custom styles */
+@layer components {
+  .nav-link {
+    @apply rounded-full text-center capitalize decoration-orange-400 decoration-2 underline-offset-8 transition-transform duration-200 ease-out hover:scale-110 hover:font-bold hover:underline active:underline;
+  }
+
+  .header-subscribe-btn {
+    @apply hidden rounded-full bg-slate-900 px-4 py-2 text-white dark:bg-slate-800 md:inline lg:px-8 lg:py-4;
+  }
+
+  .header-title {
+    @apply px-10 pt-5 font-serif text-4xl capitalize underline decoration-orange-400 decoration-double decoration-2 underline-offset-4;
+  }
+
+  .article-container {
+    @apply flex cursor-pointer flex-col rounded-lg bg-slate-100 shadow-sm transition-all duration-200 ease-out hover:scale-105 hover:bg-slate-200 hover:shadow-lg dark:bg-slate-800;
+  }
+}
