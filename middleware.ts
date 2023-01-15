@@ -15,7 +15,9 @@ export default async function middleware(req: MyNextApiRequest) {
    *       the current page as been loaded and it will revalidate the cache
    *       only when the page as been loaded more then 5 times
    */
-  await revalidatePageCache(path);
+  const res = await revalidatePageCache(path);
+
+  console.log("Res revalidating here: ", res);
 }
 
 // Only intercept the requests for the following routes
