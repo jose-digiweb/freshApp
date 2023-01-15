@@ -36,13 +36,15 @@ export default async function handler(
     // Revalidate the page cache
     if (count > 5) await res.revalidate(path);
 
+    console.log({ path, revalidated: count > 5 });
+
     // Send the response
     res.status(200).json({ revalidated: count > 5 });
 
     // Handle error
   } catch (error) {
     // Log the error
-    console.error(error);
+    console.error(" my error: ", error);
 
     // Send the response
     // Next.js will continue to show the last successfully generated page

@@ -1,17 +1,14 @@
 // Import dependencies
 import { env } from "../env/server.mjs";
 
-// The response type definition
-type ResponseData = { revalidated: boolean };
-
 /**
  * Function that will call the endpoint to revalidate the cache for a specific page
  * @param string    The page path to revalidate the cache
  */
-export default async function revalidatePageCache(path: string) {
+export default async function revalidatePageCache(path: Path) {
   try {
     // Call the revalidate endpoint
-    const response = await fetch("http://127.0.0.1:3000/api/revalidate", {
+    await fetch("http://127.0.0.1:3000/api/revalidate", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -19,14 +16,6 @@ export default async function revalidatePageCache(path: string) {
       },
       body: JSON.stringify(path),
     });
-
-    // Get the response data
-    const data = (await response.json()) as ResponseData;
-
-    console.log("data rev: ", data);
-
-    // Return the response data
-    return data;
 
     // Handle errors
   } catch (error) {
