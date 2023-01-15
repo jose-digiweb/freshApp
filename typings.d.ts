@@ -64,7 +64,7 @@ interface MyNextApiRequest extends NextApiRequest {
     host: string;
     hostname: string;
     port: string;
-    pathname: string;
+    pathname: Path;
     search: string;
     hash: string;
   };
