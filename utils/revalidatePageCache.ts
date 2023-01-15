@@ -11,17 +11,14 @@ type ResponseData = { revalidated: boolean };
 export default async function revalidatePageCache(path: string) {
   try {
     // Call the revalidate endpoint
-    const response = await fetch(
-      "https://fresh-news.vercel.app/api/revalidate",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: env.REVALIDATE_TOKEN,
-        },
-        body: JSON.stringify(path),
-      }
-    );
+    const response = await fetch("http://127.0.0.1:3000/api/revalidate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: env.REVALIDATE_TOKEN,
+      },
+      body: JSON.stringify(path),
+    });
 
     // Get the response data
     const data = (await response.json()) as ResponseData;
