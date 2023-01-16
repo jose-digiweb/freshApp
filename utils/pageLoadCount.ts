@@ -13,20 +13,6 @@ export default function pageLoadCount(pagePath: Path) {
   //   const pp = path.resolve("pagesLoadCount.json");
   const pp = "/tmp/pagesLoadCount.json";
 
-  fs.writeFileSync(
-    pp,
-    JSON.stringify({
-      "/": "4",
-      "/general": "3",
-      "/business": "2",
-      "/entertainment": "2",
-      "/technology": "4",
-      "/sports": "4",
-      "/science": "4",
-      "/health": "5",
-    })
-  );
-
   // Get the pagesLoadCount record
   const pagesLoadCount = fs.readFileSync(pp, "utf-8");
 
