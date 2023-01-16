@@ -8,7 +8,7 @@ import { env } from "../env/server.mjs";
 export default async function revalidatePageCache(path: Path) {
   try {
     // Call the revalidate endpoint
-    await fetch("http://127.0.0.1:3000/api/revalidate", {
+    await fetch("https://fresh-news.vercel.app/api/revalidate", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
