@@ -1,6 +1,6 @@
 // Import dependencies
 import fs from "fs";
-import path from "path";
+// import path from "path";
 
 /**
  * This function implements the logic to keep tracking
