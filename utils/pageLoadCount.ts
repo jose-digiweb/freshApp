@@ -10,7 +10,9 @@ import path from "path";
  */
 export default function pageLoadCount(pagePath: Path) {
   // Get the path to the file
-  const pp = path.resolve("pagesLoadCount.json");
+  //   const pp = path.resolve("pagesLoadCount.json");
+  const pp = "/tmp/pagesLoadCount.json";
+
   // Get the pagesLoadCount record
   const pagesLoadCount = fs.readFileSync(pp, "utf-8");
 
