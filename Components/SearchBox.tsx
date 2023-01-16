@@ -20,7 +20,7 @@ export default function SearchBox() {
     // Prevent default browser behavior
     e.preventDefault();
 
-    // Make sure we have a query
+    // Make sure we the a query
     if (!query) return;
 
     // Redirect the user to the search results page
