@@ -6,18 +6,13 @@ import revalidatePageCache from "./utils/revalidatePageCache";
  * for the routes specified in the config.matcher bellow
  */
 export default async function middleware(req: MyNextApiRequest) {
-  // Get the current path
-  const path = req.nextUrl.pathname;
-
-  console.log("Middleware called");
-
   /**
    * Call the revalidate endpoint
    * @Note The revalidated endpoint will keep tracking how many time
    *       the current page as been loaded and it will revalidate the cache
    *       only when the page as been loaded more then 5 times
    */
-  await revalidatePageCache(path);
+  await revalidatePageCache(req.nextUrl.pathname);
 }
 
 // Only intercept the requests for the following routes

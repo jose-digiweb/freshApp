@@ -36,6 +36,8 @@ export default async function handler(
     // Revalidate the page cache
     if (count > 5) await res.revalidate(path);
 
+    // This log is to make sure this is working in production
+    // This log will show up in the host server
     console.log({ path, count, revalidated: count > 5 });
 
     // Send the response

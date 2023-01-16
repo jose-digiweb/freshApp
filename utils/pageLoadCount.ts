@@ -1,6 +1,7 @@
 // Import dependencies
 import fs from "fs";
-// import path from "path";
+import { env } from "../env/server.mjs";
+import { loadCountMockData } from "./constants";
 
 /**
  * This function implements the logic to keep tracking
@@ -9,30 +10,19 @@ import fs from "fs";
  * @returns number  The current load count
  */
 export default function pageLoadCount(pagePath: Path) {
-  // Get the path to the file
-  //   const pp = path.resolve("pagesLoadCount.json");
-  const pp = "/tmp/pagesLoadCount.json";
+  // Get the path to the page count record
+  const recordFilePath =
+    env.NODE_ENV === "production"
+      ? "/tmp/pagesLoadCount.json"
+      : "./pagesLoadCount.json";
 
-  const ex = fs.existsSync(pp);
-
-  if (!ex) {
-    fs.writeFileSync(
-      pp,
-      JSON.stringify({
-        "/": "0",
-        "/general": "0",
-        "/business": "0",
-        "/entertainment": "0",
-        "/technology": "0",
-        "/sports": "0",
-        "/science": "0",
-        "/health": "0",
-      })
-    );
+  // Create the file if it doesn't exist'
+  if (!fs.existsSync(recordFilePath)) {
+    fs.writeFileSync(recordFilePath, JSON.stringify(loadCountMockData));
   }
 
   // Get the pagesLoadCount record
-  const pagesLoadCount = fs.readFileSync(pp, "utf-8");
+  const pagesLoadCount = fs.readFileSync(recordFilePath, "utf-8");
 
   // Parse the pagesLoadCount data to a javascript object
   const loadCountObject = JSON.parse(pagesLoadCount) as PageLoadCount;
@@ -46,7 +36,7 @@ export default function pageLoadCount(pagePath: Path) {
     loadCountObject[pagePath] = "0";
 
     // Update the pagesLoadCount record
-    fs.writeFileSync(pp, JSON.stringify(loadCountObject));
+    fs.writeFileSync(recordFilePath, JSON.stringify(loadCountObject));
 
     // Otherwise
   } else {
@@ -54,7 +44,7 @@ export default function pageLoadCount(pagePath: Path) {
     loadCountObject[pagePath] = `${++count}`;
 
     // Update the pagesLoadCount record
-    fs.writeFileSync(pp, JSON.stringify(loadCountObject));
+    fs.writeFileSync(recordFilePath, JSON.stringify(loadCountObject));
   }
 
   // Return the count
