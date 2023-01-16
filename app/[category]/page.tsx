@@ -8,9 +8,12 @@ type Props = {
   params: { category: string };
 };
 
+// Revalidate the cache in every 20 seconds
+export const revalidate = 20;
+
 /**
  * This function implements the CategoryPage component
- * @Note We revalidate the cache if this page has been loaded more then 5 times
+ * @Note We also revalidate the cache if this page has been loaded more then 5 times
  * @Note See the middleware file for more details
  */
 export default async function CategoryPage({ params: { category } }: Props) {
